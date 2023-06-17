@@ -1,0 +1,35 @@
+{
+  "name": "vlot",
+  "version": "0.0.0",
+  "main": "./dist/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./jsx-runtime": {
+      "import": "./dist/jsx-runtime/index.mjs",
+      "require": "./dist/jsx-runtime/index.js",
+      "types": "./jsx-runtime/index.d.ts"
+    },
+    "./jsx-dev-runtime": {
+      "import": "./dist/jsx-dev-runtime/index.mjs",
+      "require": "./dist/jsx-dev-runtime/index.js",
+      "types": "./jsx-dev-runtime/index.d.ts"
+    }
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "tsup src/index.ts src/jsx-runtime/index.ts src/jsx-dev-runtime/index.ts --dts --format esm,cjs --minify",
+    "dev": "tsup src/index.ts src/jsx-runtime/index.ts src/jsx-dev-runtime/index.ts --dts --format esm --watch",
+    "lint": "eslint \"**/*.ts\""
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-custom": "*",
+    "tsconfig": "*",
+    "tsup": "^7.0.0",
+    "typescript": "^5.1.3"
+  }
+}
